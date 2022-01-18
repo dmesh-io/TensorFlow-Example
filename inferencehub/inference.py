@@ -21,4 +21,4 @@ def postprocess_function(output: np.ndarray) -> np.ndarray:
     # postprocessing
     out = np.argmax(output)  # perform argmax to generate 1 channel
     out = class_names[out]  # change class index to class name
-    return np.array([out])
+    return np.array(out)

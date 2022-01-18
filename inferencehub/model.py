@@ -19,4 +19,4 @@ class ModelWrapper(tf.keras.Model):
 
 def get_model(weights_path: str = None, map_location="cpu",
               model_initialization_parameters: Dict = None) -> tf.keras.Model:
-    return ModelWrapper(weights_path)
+    return tf.keras.models.load_model(weights_path)
