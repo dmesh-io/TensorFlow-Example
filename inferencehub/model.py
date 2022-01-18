@@ -11,7 +11,7 @@ class ModelWrapper(tf.keras.Model):
         self.model = tf.keras.models.load_model(weights_path)
 
     @tf.function(input_signature=[tf.TensorSpec(shape=None, dtype=tf.float32)])
-    def predict(self, x) -> tf.Tensor:
+    def __call__(self, x) -> tf.Tensor:
         print(x)
         out = self.model(x)
         return out
