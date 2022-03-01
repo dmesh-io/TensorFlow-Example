@@ -1,5 +1,6 @@
 from typing import Dict
 
+from PIL import Image
 import numpy as np
 import tensorflow as tf
 
@@ -10,7 +11,8 @@ class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', '
 
 def preprocess_function(input_payload: dict, model: tf.keras.Model, input_parameters: Dict) -> np.ndarray:
     # preprocessing
-    image = np.array([input_payload])  # convert to numpy array
+
+    image = np.array(Image.open(input_payload), dtype="uint8")  # convert to numpy array
     image = normalize_01(image)  # linear scaling to range [0-1]
     image = image.astype(np.float32)  # typecasting to float32
 
