@@ -9,10 +9,10 @@ from github_repo.transformations import normalize_01
 class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
 
-def preprocess_function(input_payload: dict, model: tf.keras.Model, input_parameters: Dict) -> np.ndarray:
+def preprocess_function(input_payload: dict) -> np.ndarray:
     # preprocessing
 
-    image = np.array(Image.open(input_payload), dtype="uint8")  # convert to numpy array
+    image = np.array(Image.open(input_payload), dtype="uint8")[None]  # convert to numpy array
     image = normalize_01(image)  # linear scaling to range [0-1]
     image = image.astype(np.float32)  # typecasting to float32
 
